@@ -1,0 +1,142 @@
+<!--
+A single user list with a username, avatar, and desc.
+
+##### Example
+
+	<paper-user-list avatar="url" username="name" message="hello"></paper-user-list>
+
+-->
+<polymer-element name="paper-user-list" attributes="avatar color username text status timestamp">
+  <template>
+	<style>
+	:host {
+		display: block;
+        position: relative;
+		width: 100%;
+		border-bottom: 1px solid #e0e0e0;
+        font-size: 16px;
+        min-height: 72px;
+        z-index: 0;
+	}
+	.user-list {
+		padding: 16px;
+	}
+	.avatar {
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+  		margin: 0 16px 0 0;
+		background: #9e9e9e url() center center no-repeat;
+		background-size: contain;
+		position: relative;
+	}
+	.status {
+		position: absolute;
+		bottom: -3px;
+		right: -3px;
+		border-radius: 50%;
+		width: 14px;
+		height: 14px;
+		background-color: #28D004;
+		display: none;
+	}
+	.status.online {
+		display: block;
+	}
+	.username {
+		text-transform: capitalize;
+		font-weight: 500;
+		color: #919191;
+		line-height: 1.3em;
+		max-width: 90%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	.timestamp {
+		font-size: 0.75em;
+		color: #919191;
+	}
+	.avatar {
+    	border: solid 3px silver;
+	}
+	.avatar.navy {
+	    border-color: #393b79;
+	}
+	.avatar.slate {
+	    border-color: #6b6ecf;
+	}
+	.avatar.olive {
+	    border-color: #637939;
+	}
+	.avatar.moss {
+	    border-color: #b5cf6b;
+	}
+	.avatar.chocolate {
+	    border-color: #8c6d31;
+	}
+	.avatar.buttercup {
+	    border-color: #e7ba52;
+	}
+	.avatar.maroon {
+	    border-color: #843c39;
+	}
+	.avatar.cerise {
+	    border-color: #d6616b;
+	}
+	.avatar.plum {
+	    border-color: #7b4173;
+	}
+	.avatar.orchid {
+	    border-color: #ce6dbd;
+	}
+	</style>
+	
+	<section class="user-list" layout horizontal>
+		<div class="avatar {{color}}" style="background-image: url({{avatar}})">
+			<div class="status {{status}}"></div>
+		</div>
+		<div flex>
+			<div class="username">{{username}}</div>
+			<div class="text">{{text}}</div>
+		</div>
+		<div class="timestamp">{{time}}</div>
+	</section>
+</template>
+<script>
+Polymer('paper-user-list', {
+	avatar: '',
+	color: '',
+	username: '',
+	text: '',
+	status: '',
+	timestamp: 1420145273945,
+
+	domReady: function() {
+		var d = new Date(this.timestamp);
+		var today =  new Date().getDate();
+
+		if (d.getDate() == today) { // show only time
+			var options = {hour: 'numeric', minute: 'numeric'};
+		} else { // show date
+			var options = {month: 'short', day: 'numeric'};
+		}
+		
+		this.time = new Intl.DateTimeFormat(navigator.language, options).format(d);
+
+		
+		// Realtime update
+		// if(diff < 60) { // less than 1 min
+		// 	this.time = (diff >>> 0) + 's';
+		// } else if (diff <  3600) { // less than 60 min
+		// 	this.time = ((diff/60) >>> 0) + 'm';
+		// } else if (diff < 86400) { // less than 24 hrs
+		// 	this.time = ((diff/3600) >>> 0) + 'h';
+		// } else {
+		// 	var d = new Date(this.timestamp);
+		// 	this.time = new Intl.DateTimeFormat(navigator.language, options).format(d);
+		// }
+	}
+});
+</script>
+</polymer-element>

@@ -1,0 +1,25 @@
+<link rel="import" href="../polymer/polymer.html"> 
+<link rel="import" href="pubnub-element.html">
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<polymer-element name="list-data" attributes="heading {{data}}">
+  <template>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <div class="panel panel-default">
+      <div class="panel-heading">{{heading}}</div>
+
+      <ul class="list-group" style="max-height: 500px; overflow: auto;">
+      <template repeat="{{ datum in data }}">
+        <li class="list-group-item">{{datum}}</li>
+      </template>
+      </ul>
+    </div>
+  </template>
+  <script>
+Polymer('list-data', {
+  ready: function() {
+    this.data = [];
+  }
+});
+  </script>
+</polymer-element>

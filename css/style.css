@@ -1,0 +1,113 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "RobotoDraft", "Helvetica Neue", "Segoe UI Web Regular", "Segoe UI", Helvetica, Arial, sans-serif; 
+    color: #333;
+    font-weight: 300;
+}
+:host {
+    width: 100%;
+    height: 100%;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+core-scaffold::shadow core-toolbar {
+    background-color: #ce1126;
+    color: #fff;
+}
+core-icon[icon=account-circle] {
+    margin-right: 3px;
+}
+paper-input {
+    padding-right: 10px;
+}
+paper-input /deep/ .focused-underline {
+    background-color: #ce1126;
+}
+paper-fab[icon=send] {
+    background: #ce1126;
+    bottom: 8px;
+}
+#chat {
+    height: 100%;
+}
+.chat-list {
+    overflow-y: scroll;
+    padding-bottom: 16px;
+}
+.send-message {
+    padding: 0 24px 6px 16px;
+}
+.shim {
+    position: fixed;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(rgba(255,255,255,0), #eee 40%) top center no-repeat;
+}
+.occupancy {
+    padding: 16px;
+}
+.subdue, .subdue /deep/ div {
+    color: #999;
+}
+
+/* Drawer */
+
+#onlineList {
+    margin: 16px;
+}
+
+::content > .avatar {
+    margin: 0; /* override */
+}
+#navheader {
+    background: url(../images/abstract-21664.jpg) top left no-repeat;
+}
+#navheader .avatar {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background: #9e9e9e url() center center no-repeat;
+    background-size: contain;
+}
+#navheader .uuid {
+    color: #fff;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Avatar */
+.avatar {
+    border: solid 3px silver;
+}
+.avatar.navy {
+    border-color: #393b79;
+}
+.avatar.slate {
+    border-color: #6b6ecf;
+}
+.avatar.olive {
+    border-color: #637939;
+}
+.avatar.moss {
+    border-color: #b5cf6b;
+}
+.avatar.chocolate {
+    border-color: #8c6d31;
+}
+.avatar.buttercup {
+    border-color: #e7ba52;
+}
+.avatar.maroon {
+    border-color: #843c39;
+}
+.avatar.cerise {
+    border-color: #d6616b;
+}
+.avatar.plum {
+    border-color: #7b4173;
+}
+.avatar.orchid {
+    border-color: #ce6dbd;
+}

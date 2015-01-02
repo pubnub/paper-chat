@@ -1,0 +1,36 @@
+{
+  "name": "pubnub-element",
+  "authors": [
+    "Larry Wu <lw7360@gmail.com>"
+  ],
+  "description": "A Polymer Element for PubNub.",
+  "keywords": [
+    "PubNub",
+    "Polymer",
+    "web-components"
+  ],
+  "main": "pubnub-element.html",
+  "license": "MIT",
+  "homepage": "https://github.com/pubnub/pubnub-polymer",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer",
+    "platform": "Polymer/platform"
+  },
+  "_release": "3582b860f4",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "3582b860f403282afe4bcfac8279ab5cc2ea30fe"
+  },
+  "_source": "git://github.com/pubnub/pubnub-polymer.git",
+  "_target": "*",
+  "_originalSource": "pubnub-polymer",
+  "_direct": true
+}
