@@ -35,15 +35,15 @@ paper-fab[icon=send] {
     padding-bottom: 16px;
 }
 .send-message {
-    padding: 0 24px 6px 16px;
+    padding: 0 18px 6px 16px;
 }
 .shim {
     position: fixed;
-    bottom: 60px;
+    bottom: 54px;
     left: 0;
     right: 0;
     height: 40px;
-    background: linear-gradient(rgba(255,255,255,0), #eee 40%) top center no-repeat;
+    background: linear-gradient(rgba(255,255,255,0), #eee 80%) top center no-repeat;
 }
 .occupancy {
     padding: 16px;

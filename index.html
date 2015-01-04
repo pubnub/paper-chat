@@ -31,11 +31,11 @@
 
 <template is="auto-binding">
 
-<core-pubnub publish_key="pub-c-156a6d5f-22bd-4a13-848d-b5b4d4b36695" subscribe_key="sub-c-f762fb78-2724-11e4-a4df-02ee2ddab7fe" uuid="{{uuid}}">
-	<core-pubnub-subscribe channel="polymer-chat" id="sub" on-callback="{{subscribeCallback}}" on-presence="{{presenceChanged}}"> 
-	    <core-pubnub-publish channel="polymer-chat" id="pub" message=""></core-pubnub-publish>
-		<core-pubnub-here-now channel="polymer-chat" on-presence="{{herePresenceChanged}}"></core-pubnub-here-now>
-		<core-pubnub-history channel="polymer-chat" count="15" on-success="{{historyRetrieved}}"></core-pubnub-history>
+<core-pubnub publish_key="pub-c-156a6d5f-22bd-4a13-848d-b5b4d4b36695" subscribe_key="sub-c-f762fb78-2724-11e4-a4df-02ee2ddab7fe" origin="pubsub.pubnub.com" id="core" uuid="{{uuid}}">
+	<core-pubnub-subscribe channel="polymer-chat" id="sub" on-callback="{{subscribeCallback}}" on-presence="{{presenceChanged}}" on-error="{{error}}"> 
+	    <core-pubnub-publish channel="polymer-chat" message="" id="pub" on-error="{{error}}"></core-pubnub-publish>
+		<core-pubnub-here-now channel="polymer-chat" on-presence="{{herePresenceChanged}}"></core-pubnub-here-now on-error="{{error}}">
+		<core-pubnub-history channel="polymer-chat" count="30" on-success="{{historyRetrieved}}" on-error="{{error}}"></core-pubnub-history>
     </core-pubnub-subscribe>
 </core-pubnub>
 
@@ -75,9 +75,8 @@
   	</section>
 </core-scaffold>
 
+</template>
 
 <script src="js/app.js"></script>
-
-</template>
 </body>
 </html>
