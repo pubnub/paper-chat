@@ -4,18 +4,18 @@
     var uuid, avatar, color, cat;
 
     // Assign a uuid made of a random cat and a random color
-    var ranlistElColor = function() {   
+    var randomColor = function() {   
         var colors = ['navy', 'slate', 'olive', 'moss', 'chocolate', 'buttercup', 'maroon', 'cerise', 'plum', 'orchid'];   
         return colors[(Math.random() * colors.length) >>> 0];
     };
 
-    var ranlistElCat = function() {   
+    var randomCat = function() {   
         var cats = ['tabby', 'bengal', 'persian', 'mainecoon', 'ragdoll', 'sphynx', 'siamese', 'korat', 'japanesebobtail', 'abyssinian', 'scottishfold'];           
         return cats[(Math.random() * cats.length) >>> 0];        
     }; 
 
-    color = ranlistElColor();
-    cat = ranlistElCat();
+    color = randomColor();
+    cat = randomCat();
     uuid = color + '-' + cat;
     avatar = 'images/' + cat + '.jpg';
 
@@ -109,6 +109,5 @@
     template.error = function(e) {
         console.log(e);
     };
-
 
 })();
