@@ -25,7 +25,7 @@ paper-input /deep/ .focused-underline {
 }
 paper-fab[icon=send] {
     background: #ce1126;
-    bottom: 8px;
+    bottom: 9px;
 }
 #chat {
     height: 100%;
@@ -35,14 +35,14 @@ paper-fab[icon=send] {
     padding-bottom: 16px;
 }
 .send-message {
-    padding: 0 18px 6px 16px;
+    padding: 0 16px 6px 16px;
 }
 .shim {
     position: fixed;
     bottom: 54px;
     left: 0;
     right: 0;
-    height: 40px;
+    height: 36px;
     background: linear-gradient(rgba(255,255,255,0), #eee 80%) top center no-repeat;
 }
 .occupancy {
@@ -56,6 +56,7 @@ paper-fab[icon=send] {
 
 #onlineList {
     margin: 16px;
+    text-transform: capitalize;
 }
 
 ::content > .avatar {
