@@ -56,6 +56,8 @@
         [].forEach.call(list, function(l) {
             if(onlineUuids.indexOf(l.uuid) > -1) {
                 l.status = 'online';
+            } else {
+                l.status = 'offline';
             }
         });
         return list;
@@ -63,32 +65,51 @@
 
     template.displayChatList = function(list) {
         template.messageList = list;
-        // scroll to bottom
+        // scroll to bottom when all list items are displayed
         template.async(showNewest);
     };
 
     template.subscribeCallback = function(e) {
         if(template.$.sub.messages.length > 0) { 
-            template.displayChatList(pastMsgs.concat(this.getListWithOnlineStatus(template.$.sub.messages)));
+            this.displayChatList(pastMsgs.concat(this.getListWithOnlineStatus(template.$.sub.messages)));
         } 
     };
 
     template.presenceChanged = function(e) {
-        template.$.sub.presence.map(function(m){
-            template.occupancy = m.occupancy;
-        });
-    };
+        var i = 0;
+        var l = template.$.sub.presence.length;
+        var d = template.$.sub.presence[l - 1];
 
-    template.herePresenceChanged = function(e) {
-        // Display at left as list
-        onlineUuids = e.detail.uuids;
-        template.people = onlineUuids;
+        // how many users
+        template.occupancy = d.occupancy;
+
+        // who are online
+        if(d.action === 'join') {
+            if(d.uuid.length > 35) { // console
+                d.uuid = 'the-mighty-big-cat'; 
+            }
+            onlineUuids.push(d.uuid);
+        } else {
+            var idx = onlineUuids.indexOf(d.uuid);
+            if(idx > -1) {
+                onlineUuids.splice(idx, 1);
+            }
+        }
+
+        i++;
+
+        // display at the left column
+        template.cats = onlineUuids;
+        // update the status at the main column
+        if(template.messageList.length > 0) {
+            template.messageList = this.getListWithOnlineStatus(template.messageList);
+        }
     };
 
     template.historyRetrieved = function(e) {
         if(e.detail[0].length > 0) {
             pastMsgs = this.getListWithOnlineStatus(e.detail[0]); 
-            template.displayChatList(pastMsgs);
+            this.displayChatList(pastMsgs);
         } 
     };
 
