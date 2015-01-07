@@ -23,15 +23,15 @@
 	<link rel="import" href="bower_components/core-item/core-item.html"> 
 	<link rel="import" href="bower_components/paper-input/paper-input.html">
 	<link rel="import" href="bower_components/paper-fab/paper-fab.html">
-	<link rel="import" href="paper-user-list.html">
+	<link rel="import" href="x-chat-list.html">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body unresolved fullbleed vertical layout>
+<body unresolved fullbleed>
 
 <template is="auto-binding">
 
-<core-pubnub publish_key="pub-c-156a6d5f-22bd-4a13-848d-b5b4d4b36695" subscribe_key="sub-c-f762fb78-2724-11e4-a4df-02ee2ddab7fe" origin="pubsub.pubnub.com" id="core" uuid="{{uuid}}">
+<core-pubnub publish_key="pub-c-156a6d5f-22bd-4a13-848d-b5b4d4b36695" subscribe_key="sub-c-f762fb78-2724-11e4-a4df-02ee2ddab7fe" uuid="{{uuid}}">
 	<core-pubnub-subscribe channel="polymer-chat" id="sub" messages="{{messages}}" on-callback="{{subscribeCallback}}"> 
 	    <core-pubnub-publish channel="polymer-chat" id="pub" message=""></core-pubnub-publish>
     </core-pubnub-subscribe>
@@ -43,6 +43,12 @@
     		<div class="middle avatar {{color}}" style="background-image: url({{avatar}})"></div>
 	      	<div class="bottom uuid">{{uuid}}</div>
 	    </core-toolbar>
+
+	    <core-item label="Build with:"></core-item>
+   		<template repeat="{{item in items}}">
+   			<core-item icon="{{item.icon}}" label="{{item.title}}"></core-item>
+   		</template>
+
   	</core-header-panel>
 
   	<div tool layout horizontal flex>
@@ -53,7 +59,7 @@
   	<section layout vertical fit id="chat">
 		<div flex class="chat-list">
 			<template repeat="{{message in messages}}">
-				<paper-user-list color="{{message.color}}" avatar="{{message.avatar}}" username="{{message.uuid}}" text="{{message.text}}"  status="{{message.status}}" timestamp="{{message.timestamp}}"></paper-user-list>
+				<x-chat-list color="{{message.color}}" avatar="{{message.avatar}}" username="{{message.uuid}}" text="{{message.text}}"  status="{{message.status}}" timestamp="{{message.timestamp}}"></x-chat-list>
 			</template>
 		</div>
 		<div class="shim"></div>
@@ -102,6 +108,12 @@
     template.uuid = uuid;
     template.avatar = avatar;
     template.color = color;
+
+    template.items = [
+    	{title: 'PubNub', icon: 'cloud'},
+    	{title: 'Polymer', icon: 'polymer'},
+    	{title: 'Love', icon: 'favorite'}
+    ];
 
     template.checkKey = function(e) {
         if(e.keyCode === 13 || e.charCode === 13) {

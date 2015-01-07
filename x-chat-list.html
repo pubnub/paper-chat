@@ -3,10 +3,10 @@ A single user list with a username, avatar, and desc.
 
 ##### Example
 
-	<paper-user-list avatar="url" username="name" message="hello"></paper-user-list>
+	<x-chat-list avatar="url" username="name" message="hello" status="online" timestamp="1420145273945"></x-chat-list>
 
 -->
-<polymer-element name="paper-user-list" attributes="avatar color username text status timestamp">
+<polymer-element name="x-chat-list" attributes="avatar color username text status timestamp">
   <template>
 	<style>
 	:host {
@@ -104,7 +104,7 @@ A single user list with a username, avatar, and desc.
 	</section>
 </template>
 <script>
-Polymer('paper-user-list', {
+Polymer('x-chat-list', {
 	avatar: '',
 	color: '',
 	username: '',
