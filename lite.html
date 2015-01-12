@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body unresolved fullbleed>
+<body unresolved fullbleed class="lite">
 
 <template is="auto-binding">
 
@@ -44,10 +44,12 @@
 	      	<div class="bottom uuid">{{uuid}}</div>
 	    </core-toolbar>
 
-	    <core-item label="Build with:"></core-item>
-   		<template repeat="{{item in items}}">
-   			<core-item icon="{{item.icon}}" label="{{item.title}}"></core-item>
-   		</template>
+	    <section layout vertical id="onlineList">
+		    <core-item label="Build with:"></core-item>
+	   		<template repeat="{{item in items}}">
+	   			<core-item icon="{{item.icon}}" label="{{item.title}}"></core-item>
+	   		</template>
+   		</section>
 
   	</core-header-panel>
 
