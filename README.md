@@ -1,3 +1,5 @@
+![Material Design and Polymer](http://pubnub.com/blog/wp-content/uploads/2015/01/paper-chat-cover.png "Material Design and Polymer")
+
 # Paper Chat Demo
 
 A simple chat room in Material Design build with Polymer.
@@ -7,6 +9,10 @@ This demo is written for a tutorial to show how to create a simple chat app usin
 ## Live Demo
 
 [Try this on multiple browsers including mobile](http://pubnub.github.io/paper-chat/index.html)
+
+## Tutorial
+
+[TBD][blog]
 
 ### Photo Credits
 
@@ -32,3 +38,4 @@ Othwewise CC0. Tabby is my cat, Jamie :-)
 [md]: http://www.google.com/design/spec/material-design/introduction.html
 [pubnub]: http://www.pubnub.com/docs/javascript/javascript-sdk.html
 
+[blog]: http://www.pubnub.com/blog
