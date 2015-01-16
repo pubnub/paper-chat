@@ -12,7 +12,7 @@ This demo is written for a tutorial to show how to create a simple chat app usin
 
 ## Tutorial
 
-[TBD][blog]
+[Creating a Polymer Chat App with Material Design][blog]
 
 ### Photo Credits
 
@@ -38,4 +38,4 @@ Othwewise CC0. Tabby is my cat, Jamie :-)
 [md]: http://www.google.com/design/spec/material-design/introduction.html
 [pubnub]: http://www.pubnub.com/docs/javascript/javascript-sdk.html
 
-[blog]: http://www.pubnub.com/blog
+[blog]: http://www.pubnub.com/blog/creating-a-polymer-chat-app-with-material-design/
