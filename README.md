@@ -14,7 +14,9 @@ This demo is written for a tutorial to show how to create a simple chat app usin
 
 [Creating a Polymer Chat App with Material Design][blog]
 
-### Photo Credits
+### Photo & Graphic Credits
+
+The flat phone image that I used to create the banner on this ReadMe and Blog is create by [Andrew Beckwith](https://dribbble.com/shots/1093397-Flat-Phones-PSD-Freebie?list=users&offset=13)
 
 I used these photos as avatars:
 
@@ -30,7 +32,7 @@ I used these photos as avatars:
 
 Othwewise CC0. Tabby is my cat, Jamie :-)
 
-
+Thank you <3
 
 
 
