@@ -4,15 +4,15 @@
     var uuid, avatar, color, cat;
 
     // Assign a uuid made of a random cat and a random color
-    var randomColor = function() {   
-        var colors = ['navy', 'slate', 'olive', 'moss', 'chocolate', 'buttercup', 'maroon', 'cerise', 'plum', 'orchid'];   
+    var randomColor = function() {
+        var colors = ['navy', 'slate', 'olive', 'moss', 'chocolate', 'buttercup', 'maroon', 'cerise', 'plum', 'orchid'];
         return colors[(Math.random() * colors.length) >>> 0];
     };
 
-    var randomCat = function() {   
-        var cats = ['tabby', 'bengal', 'persian', 'mainecoon', 'ragdoll', 'sphynx', 'siamese', 'korat', 'japanesebobtail', 'abyssinian', 'scottishfold'];           
-        return cats[(Math.random() * cats.length) >>> 0];        
-    }; 
+    var randomCat = function() {
+        var cats = ['tabby', 'bengal', 'persian', 'mainecoon', 'ragdoll', 'sphynx', 'siamese', 'korat', 'japanesebobtail', 'abyssinian', 'scottishfold'];
+        return cats[(Math.random() * cats.length) >>> 0];
+    };
 
     color = randomColor();
     cat = randomCat();
@@ -45,7 +45,7 @@
     };
 
     template.messageList = [];
-    
+
 
     /* PubNub Realtime Chat */
 
@@ -70,9 +70,9 @@
     };
 
     template.subscribeCallback = function(e) {
-        if(template.$.sub.messages.length > 0) { 
+        if(template.$.sub.messages.length > 0) {
             this.displayChatList(pastMsgs.concat(this.getListWithOnlineStatus(template.$.sub.messages)));
-        } 
+        }
     };
 
     template.presenceChanged = function(e) {
@@ -86,7 +86,7 @@
         // who are online
         if(d.action === 'join') {
             if(d.uuid.length > 35) { // console
-                d.uuid = 'the-mighty-big-cat'; 
+                d.uuid = 'the-mighty-big-cat';
             }
             onlineUuids.push(d.uuid);
         } else {
@@ -108,18 +108,18 @@
 
     template.historyRetrieved = function(e) {
         if(e.detail[0].length > 0) {
-            pastMsgs = this.getListWithOnlineStatus(e.detail[0]); 
+            pastMsgs = this.getListWithOnlineStatus(e.detail[0]);
             this.displayChatList(pastMsgs);
-        } 
+        }
     };
 
     template.publish = function() {
         if(!template.input) return;
 
         template.$.pub.message = {
-            uuid: uuid, 
-            avatar: avatar, 
-            color: color, 
+            uuid: uuid,
+            avatar: avatar,
+            color: color,
             text: template.input,
             timestamp: Date.now()
         };

@@ -91,7 +91,7 @@ A single user list with a username, avatar, and desc.
 	    border-color: #ce6dbd;
 	}
 	</style>
-	
+
 	<section class="user-list" layout horizontal>
 		<div class="avatar {{color}}" style="background-image: url({{avatar}})">
 			<div class="status {{status}}"></div>
@@ -121,10 +121,10 @@ Polymer('x-chat-list', {
 		} else { // show date
 			var options = {month: 'short', day: 'numeric'};
 		}
-		
+
 		this.time = new Intl.DateTimeFormat(navigator.language, options).format(d);
 
-		
+
 		// Realtime update
 		// if(diff < 60) { // less than 1 min
 		// 	this.time = (diff >>> 0) + 's';

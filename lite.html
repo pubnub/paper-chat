@@ -14,13 +14,13 @@
 	<link rel="icon" sizes="128x128" href="images/app-icon-128.png">
 	<link rel="apple-touch-icon" sizes="128x128" href="images/app-icon-128.png">
 	<link rel="apple-touch-icon-precomposed" sizes="128x128" href="images/app-icon-128.png">
-	
+
 	<!-- Polymer -->
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 
 	<link rel="import" href="bower_components/pubnub-polymer/pubnub-element.html">
 	<link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
-	<link rel="import" href="bower_components/core-item/core-item.html"> 
+	<link rel="import" href="bower_components/core-item/core-item.html">
 	<link rel="import" href="bower_components/paper-input/paper-input.html">
 	<link rel="import" href="bower_components/paper-fab/paper-fab.html">
 	<link rel="import" href="x-chat-list.html">
@@ -32,7 +32,7 @@
 <template is="auto-binding">
 
 <core-pubnub publish_key="pub-c-156a6d5f-22bd-4a13-848d-b5b4d4b36695" subscribe_key="sub-c-f762fb78-2724-11e4-a4df-02ee2ddab7fe" uuid="{{uuid}}">
-	<core-pubnub-subscribe channel="polymer-chat" id="sub" messages="{{messages}}" on-callback="{{subscribeCallback}}"> 
+	<core-pubnub-subscribe channel="polymer-chat" id="sub" messages="{{messages}}" on-callback="{{subscribeCallback}}">
 	    <core-pubnub-publish channel="polymer-chat" id="pub" message=""></core-pubnub-publish>
     </core-pubnub-subscribe>
 </core-pubnub>
@@ -82,15 +82,15 @@
     var uuid, avatar, color, cat;
 
     // Assign a uuid made of a random cat and a random color
-    var randomColor = function() {   
-        var colors = ['navy', 'slate', 'olive', 'moss', 'chocolate', 'buttercup', 'maroon', 'cerise', 'plum', 'orchid'];   
+    var randomColor = function() {
+        var colors = ['navy', 'slate', 'olive', 'moss', 'chocolate', 'buttercup', 'maroon', 'cerise', 'plum', 'orchid'];
         return colors[(Math.random() * colors.length) >>> 0];
     };
 
-    var randomCat = function() {   
-        var cats = ['tabby', 'bengal', 'persian', 'mainecoon', 'ragdoll', 'sphynx', 'siamese', 'korat', 'japanesebobtail', 'abyssinian', 'scottishfold'];           
-        return cats[(Math.random() * cats.length) >>> 0];        
-    }; 
+    var randomCat = function() {
+        var cats = ['tabby', 'bengal', 'persian', 'mainecoon', 'ragdoll', 'sphynx', 'siamese', 'korat', 'japanesebobtail', 'abyssinian', 'scottishfold'];
+        return cats[(Math.random() * cats.length) >>> 0];
+    };
 
     color = randomColor();
     cat = randomCat();
@@ -134,9 +134,9 @@
         if(!template.input) return;
 
         template.$.pub.message = {
-            uuid: uuid, 
-            avatar: avatar, 
-            color: color, 
+            uuid: uuid,
+            avatar: avatar,
+            color: color,
             text: template.input,
             timestamp: Date.now()
         };
