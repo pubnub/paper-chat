@@ -6,6 +6,7 @@ A single user list with a username, avatar, and desc.
 	<x-chat-list avatar="url" username="name" message="hello" status="online" timestamp="1420145273945"></x-chat-list>
 
 -->
+<script src="bower_components/time-elements/time-elements.js"></script>
 <polymer-element name="x-chat-list" attributes="avatar color username text status timestamp">
   <template>
 	<style>
@@ -100,7 +101,7 @@ A single user list with a username, avatar, and desc.
 			<div class="username">{{username}}</div>
 			<div class="text">{{text}}</div>
 		</div>
-		<div class="timestamp">{{time}}</div>
+		<time class="timestamp" is="relative-time" datetime="{{timestamp}}"></time>
 	</section>
 </template>
 <script>
@@ -110,33 +111,7 @@ Polymer('x-chat-list', {
 	username: '',
 	text: '',
 	status: '',
-	timestamp: 1420145273945,
-
-	domReady: function() {
-		var d = new Date(this.timestamp);
-		var today =  new Date().getDate();
-
-		if (d.getDate() == today) { // show only time
-			var options = {hour: 'numeric', minute: 'numeric'};
-		} else { // show date
-			var options = {month: 'short', day: 'numeric'};
-		}
-
-		this.time = new Intl.DateTimeFormat(navigator.language, options).format(d);
-
-
-		// Realtime update
-		// if(diff < 60) { // less than 1 min
-		// 	this.time = (diff >>> 0) + 's';
-		// } else if (diff <  3600) { // less than 60 min
-		// 	this.time = ((diff/60) >>> 0) + 'm';
-		// } else if (diff < 86400) { // less than 24 hrs
-		// 	this.time = ((diff/3600) >>> 0) + 'h';
-		// } else {
-		// 	var d = new Date(this.timestamp);
-		// 	this.time = new Intl.DateTimeFormat(navigator.language, options).format(d);
-		// }
-	}
+	timestamp: new Date().toISOString(),
 });
 </script>
 </polymer-element>

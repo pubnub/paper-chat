@@ -121,7 +121,7 @@
             avatar: avatar,
             color: color,
             text: template.input,
-            timestamp: Date.now()
+            timestamp: new Date().toISOString()
         };
         template.$.pub.publish();
         template.input = '';
