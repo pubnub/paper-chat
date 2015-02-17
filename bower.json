@@ -28,6 +28,7 @@
     "paper-input": "Polymer/paper-input#~0.5.2",
     "paper-fab": "Polymer/paper-fab#~0.5.2",
     "core-item": "Polymer/core-item#~0.5.2",
-    "pubnub-polymer": "*"
+    "pubnub-polymer": "*",
+    "time-elements": "~0.4.0"
   }
 }

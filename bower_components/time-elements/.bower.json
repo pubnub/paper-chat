@@ -1,0 +1,31 @@
+{
+  "name": "time-elements",
+  "version": "0.4.0",
+  "main": "time-elements.js",
+  "devDependencies": {
+    "CustomElements": "0.2.3",
+    "es5-basic-shim": "1.0.6",
+    "MutationObserver": "0.2.0",
+    "qunit": "1.14.0",
+    "WeakMap": "0.2.1"
+  },
+  "ignore": [
+    ".*",
+    "*.md",
+    "examples/",
+    "Makefile",
+    "package.json",
+    "test/"
+  ],
+  "homepage": "https://github.com/github/time-elements",
+  "_release": "0.4.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.4.0",
+    "commit": "ab1a5a5d34301bc5b441b56a629ddc48788b19dc"
+  },
+  "_source": "git://github.com/github/time-elements.git",
+  "_target": "~0.4.0",
+  "_originalSource": "time-elements",
+  "_direct": true
+}
