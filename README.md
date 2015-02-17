@@ -21,8 +21,8 @@ The flat phone image that I used to create the banner on this ReadMe and Blog is
 I used these photos as avatars:
 
 - Bengal: Tyler T CC BY-SA 3.0
-- Siamese: Karin Langner-Bahmann CC BY-SA 3.0 
-- Sphinx: Christopher Voelker CC-BY-3.0 
+- Siamese: Karin Langner-Bahmann CC BY-SA 3.0
+- Sphinx: Christopher Voelker CC-BY-3.0
 - Ragdoll: Simone Johnsson CC BY-SA 2.0
 - Persian: UnionMaminia CC BY-SA 3.0
 - Korat: Heikkisiltala CC BY-SA 3.0
