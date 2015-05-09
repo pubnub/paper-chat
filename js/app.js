@@ -58,7 +58,7 @@
             var catName = (l.uuid + '').split('-')[1];
             l.avatar = 'images/' + catName + '.jpg';
 
-            if (catName == undefined || /\s/.test(l.uuid)) {
+            if (catName === undefined || /\s/.test(l.uuid)) {
                 l.uuid = 'fail-cat';
                 console.log('Oh you, I made this demo open so nice devs can play with, but you are soiling everything :-(');
             }
