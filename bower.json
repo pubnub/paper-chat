@@ -23,12 +23,12 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.5.2",
-    "core-scaffold": "Polymer/core-scaffold#~0.5.2",
-    "paper-input": "Polymer/paper-input#~0.5.2",
-    "paper-fab": "Polymer/paper-fab#~0.5.2",
-    "core-item": "Polymer/core-item#~0.5.2",
-    "pubnub-element": "~3.6.7",
-    "time-elements": "~0.4.0"
+    "polymer": "Polymer/polymer#0.5.2",
+    "core-scaffold": "Polymer/core-scaffold#0.5.2",
+    "paper-input": "Polymer/paper-input#0.5.2",
+    "paper-fab": "Polymer/paper-fab#0.5.2",
+    "core-item": "Polymer/core-item#0.5.2",
+    "pubnub-element": "3.6.7",
+    "time-elements": "0.4.0"
   }
 }
