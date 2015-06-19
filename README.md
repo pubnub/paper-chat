@@ -2,9 +2,13 @@
 
 # Paper Chat Demo
 
-A simple chat room in Material Design build with Polymer.
+A simple chat room in Material Design build with Polymer 0.5.x.
 
 This demo is written for a tutorial to show how to create a simple chat app using [PubNub][pubnub] data stream JavaScript API for [Polymer][polymer], and Polymer's Paper elements to achieve [Material Design][md] user-experiences.
+
+This is not currently compatible with the new Polymer 1.0.
+If you build this app by yourself, make sure to use the appropriate version of Polymer and all other components, including `pubnub-element` v3.6.7.
+See the [bower.json](https://github.com/pubnub/paper-chat/blob/gh-pages/bower.json) for the working versions for all dependencies. 
 
 ## Live Demo
 
