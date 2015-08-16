@@ -25,7 +25,6 @@
     "commit": "ab1a5a5d34301bc5b441b56a629ddc48788b19dc"
   },
   "_source": "git://github.com/github/time-elements.git",
-  "_target": "~0.4.0",
-  "_originalSource": "time-elements",
-  "_direct": true
+  "_target": "0.4.0",
+  "_originalSource": "time-elements"
 }

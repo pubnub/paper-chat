@@ -7,9 +7,35 @@ A single user list with a username, avatar, and desc.
 
 -->
 <script src="bower_components/time-elements/time-elements.js"></script>
-<polymer-element name="x-chat-list" attributes="avatar color username text status timestamp">
-  <template>
-	<style>
+<dom-module id="x-chat-list" attributes="avatar color username text status timestamp">
+<template>
+	<section class="user-list" layout horizontal>
+		<div class="avatar {{color}}" style="background-image: url({{avatar}})">
+			<div class="status {{status}}"></div>
+		</div>
+		<div flex>
+			<div class="username">{{username}}</div>
+			<div class="text">{{text}}</div>
+		</div>
+		<time class="timestamp" is="relative-time" datetime="{{timestamp}}"></time>
+	</section>
+</template>
+
+<script>
+Polymer({
+		is: 'x-chat-list',
+		properties: {
+		avatar: '',
+		color: '',
+		username: '',
+		text: '',
+		status: '',
+		timestamp: new Date().toISOString()
+	}
+});
+</script>
+
+<style>
 	:host {
 		display: block;
         position: relative;
@@ -92,26 +118,4 @@ A single user list with a username, avatar, and desc.
 	    border-color: #ce6dbd;
 	}
 	</style>
-
-	<section class="user-list" layout horizontal>
-		<div class="avatar {{color}}" style="background-image: url({{avatar}})">
-			<div class="status {{status}}"></div>
-		</div>
-		<div flex>
-			<div class="username">{{username}}</div>
-			<div class="text">{{text}}</div>
-		</div>
-		<time class="timestamp" is="relative-time" datetime="{{timestamp}}"></time>
-	</section>
-</template>
-<script>
-Polymer('x-chat-list', {
-	avatar: '',
-	color: '',
-	username: '',
-	text: '',
-	status: '',
-	timestamp: new Date().toISOString(),
-});
-</script>
-</polymer-element>
+</dom-module>

@@ -19,10 +19,17 @@
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 
 	<link rel="import" href="bower_components/pubnub-polymer/pubnub-element.html">
-	<link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
-	<link rel="import" href="bower_components/core-item/core-item.html">
+	<link rel="import" href="bower_components/iron-icon/iron-icon.html">
+	<link rel="import" href="bower_components/paper-item/paper-item.html">
 	<link rel="import" href="bower_components/paper-input/paper-input.html">
 	<link rel="import" href="bower_components/paper-fab/paper-fab.html">
+
+	<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+	<link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
+	<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+	<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+	<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+
 	<link rel="import" href="x-chat-list.html">
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -39,25 +46,28 @@
     </core-pubnub-subscribe>
 </core-pubnub>
 
-<core-scaffold>
-	<core-header-panel navigation flex>
-	    <core-toolbar id="navheader" class="tall">
+<paper-drawer-panel id="drawerPanel" responsive-width="1280px">
+	<paper-header-panel class="main" main mode="waterfall">
+	    <paper-toolbar id="navheader" class="tall">
     		<div class="middle avatar {{color}}" style="background-image: url({{avatar}})"></div>
 	      	<div class="bottom uuid">{{uuid}}</div>
-	    </core-toolbar>
+	    </paper-toolbar>
 
-	    <section layout vertical id="onlineList">
-	    	<core-item label="Online Now" class="subdue" layout horizontal center></core-item>
+	    <!-- Main Content -->
+        <div class="content">
+			<section layout vertical id="onlineList">
+	    		<paper-item label="Online Now" class="subdue" layout horizontal center></paper-item>
 
-	   		<template repeat="{{cat in cats}}">
-	   			<core-item label="{{cat}}"></core-item>
-	   		</template>
-	    </section>
-  	</core-header-panel>
+		   		<template repeat="{{cat in cats}}">
+		   			<paper-item label="{{cat}}"></paper-item>
+		   		</template>
+	    	</section>
+        </div>
+  	</paper-header-panel>
 
   	<div tool layout horizontal flex>
   		<div flex>Kitteh Anonymous</div>
-  		<core-icon icon="account-circle"></core-icon><span>{{occupancy}}</span>
+  		<iron-icon icon="account-circle"></iron-icon><span>{{occupancy}}</span>
   	</div>
 
   	<section layout vertical fit id="chat">
@@ -73,7 +83,7 @@
 	    	<paper-fab icon="send" id="sendButton" on-tap="{{sendMyMessage}}"></paper-fab>
 	    </div>
   	</section>
-</core-scaffold>
+</paper-drawer-panel>
 
 </template>
 

@@ -1,10 +1,12 @@
 {
     "name": "pubnub-element",
-    "version": "3.6.7",
+    "version": "4.0.1",
     "authors": [
-        "Larry Wu <lw7360@gmail.com>"
+    	"PubNub",
+        "Larry Wu <lw7360@gmail.com>",
+        "Kevin Gleason <kaagleason@gmail.com>"
     ],
-    "description": "A Polymer Element for PubNub.",
+    "description": "A Custom element to connect PubNub data stream.",
     "keywords": [
         "PubNub",
         "Polymer",
