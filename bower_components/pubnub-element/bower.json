@@ -1,0 +1,29 @@
+{
+    "name": "pubnub-element",
+    "version": "4.0.0",
+    "authors": [
+    	"PubNub",
+        "Larry Wu <lw7360@gmail.com>",
+        "Kevin Gleason <kaagleason@gmail.com>"
+    ],
+    "description": "A Custom element to connect PubNub data stream.",
+    "keywords": [
+        "PubNub",
+        "Polymer",
+        "web-components"
+    ],
+    "main": "pubnub-element.html",
+    "license": "MIT",
+    "homepage": "https://github.com/pubnub/pubnub-polymer",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "polymer": "Polymer/polymer",
+        "platform": "Polymer/platform"
+    }
+}
