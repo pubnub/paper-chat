@@ -7,33 +7,8 @@ A single user list with a username, avatar, and desc.
 
 -->
 <script src="bower_components/time-elements/time-elements.js"></script>
-<dom-module id="x-chat-list" attributes="avatar color username text status timestamp">
-<template>
-	<section class="user-list" layout horizontal>
-		<div class="avatar {{color}}" style="background-image: url({{avatar}})">
-			<div class="status {{status}}"></div>
-		</div>
-		<div flex>
-			<div class="username">{{username}}</div>
-			<div class="text">{{text}}</div>
-		</div>
-		<time class="timestamp" is="relative-time" datetime="{{timestamp}}"></time>
-	</section>
-</template>
 
-<script>
-Polymer({
-		is: 'x-chat-list',
-		properties: {
-		avatar: '',
-		color: '',
-		username: '',
-		text: '',
-		status: '',
-		timestamp: new Date().toISOString()
-	}
-});
-</script>
+<dom-module id="x-chat-list">
 
 <style>
 	:host {
@@ -118,4 +93,39 @@ Polymer({
 	    border-color: #ce6dbd;
 	}
 	</style>
+
+<template>
+	<section class="user-list layout horizontal">
+		<div class$="{{_colorClass(color)}}" style$="{{_backgroundImage(avatar)}})">
+			<div class="status {{status}}"></div>
+		</div>
+		<div class="flex">
+			<div class="username">{{username}}</div>
+			<div class="text">{{text}}</div>
+		</div>
+		<time class="timestamp" is="relative-time" datetime="{{timestamp}}"></time>
+	</section>
+</template>
+
+<script>
+Polymer({
+		is: 'x-chat-list',
+		properties: {
+			avatar: '',
+			color: '',
+			username: '',
+			text: '',
+			status: '',
+			timestamp: new Date().toISOString()
+		},
+		_colorClass: function(color) {
+        	return 'avatar '+color;
+    	},
+    	_backgroundImage: function(avatar) {
+        	return 'background-image: url('+avatar+');';
+    	}
+});
+</script>
+
+
 </dom-module>

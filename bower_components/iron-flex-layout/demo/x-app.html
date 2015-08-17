@@ -16,23 +16,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     :host {
       @apply(--layout-horizontal);
-      @apply(--paper-font-body2);
     }
 
     [nav] {
+      width: 300px;
       @apply(--layout-vertical);
-
-      width: 200px;
-      background-color: var(--paper-grey-300);
+      background-color: #ddd;
     }
 
     [item] {
-      @apply(--layout-horizontal);
-      @apply(--layout-center);
-
       height: 60px;
       padding-left: 16px;
-      border-bottom: 1px solid var(--paper-grey-400);
+      @apply(--layout-horizontal --layout-center);
+      border-bottom: 1px solid #bbb;
     }
 
     [main] {
@@ -41,39 +37,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     [header] {
-      @apply(--layout-horizontal);
-      @apply(--layout-center);
-
-      @apply(--paper-font-subhead);
-
       height: 60px;
-      background-color: var(--google-blue-700);
+      background-color: #ccc;
       padding: 0 16px;
-      color: white;
+      @apply(--layout-horizontal --layout-center);
     }
 
     [tool] {
       @apply(--layout-inline);
     }
 
+    [flex] {
+      @apply(--layout-flex);
+    }
+
     [content] {
       @apply(--layout-flex);
-
       overflow: auto;
-      padding: 0 10px;
     }
 
     [card] {
-      @apply(--layout-vertical);
-      @apply(--layout-center-center);
-
-      @apply(--shadow-elevation-2dp);
-
       height: 300px;
-      max-width: 800px;
+      width: 300px;
       margin: 16px auto;
-      font-weight: bold;
-      background-color: var(--paper-grey-200);
+      background-color: #eee;
+      @apply(--layout-vertical --layout-center-center);
     }
 
   </style>
@@ -93,7 +81,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div main>
       <div header>
         <div tool>Foo</div>
-        <div class="flex"></div>
+        <div flex></div>
         <div tool>Bar</div>
       </div>
       <div content>

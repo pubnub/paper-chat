@@ -17,6 +17,7 @@
 
 	<!-- Polymer -->
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+	<link rel="import" href="bower_components/polymer/polymer.html">
 
 	<link rel="import" href="bower_components/pubnub-polymer/pubnub-element.html">
 	<link rel="import" href="bower_components/iron-icon/iron-icon.html">
@@ -24,6 +25,7 @@
 	<link rel="import" href="bower_components/paper-input/paper-input.html">
 	<link rel="import" href="bower_components/paper-fab/paper-fab.html">
 
+	<link rel="import" href="bower_components/iron-flex-layout/classes/iron-flex-layout.html">
 	<link rel="import" href="bower_components/iron-icons/iron-icons.html">
 	<link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
 	<link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
@@ -32,61 +34,71 @@
 
 	<link rel="import" href="x-chat-list.html">
 	<link rel="stylesheet" href="css/style.css">
+
+	<style is="custom-style">
+		/* Defines this here because we are using Polymer 1.0 custom properties that paper-input exposes (not pretty to have it here though) */
+		paper-input {
+			padding-right: 10px;
+	        --paper-input-container-focus-color: #ce1126;
+		}
+	</style>
+	
 </head>
 
-<body unresolved fullbleed>
+<body class="unresolved fullbleed">
 
-<template is="auto-binding">
+	<template is="dom-bind" id="app">
 
-<!-- Use your own publish_key and subscribe_key please -->
-<core-pubnub publish_key="pub-c-156a6d5f-22bd-4a13-848d-b5b4d4b36695" subscribe_key="sub-c-f762fb78-2724-11e4-a4df-02ee2ddab7fe" uuid="{{uuid}}">
-	<core-pubnub-subscribe channel="polymer-chat" id="sub" on-callback="{{subscribeCallback}}" on-presence="{{presenceChanged}}" on-error="{{error}}">
-	    <core-pubnub-publish channel="polymer-chat" message="" id="pub" on-error="{{error}}"></core-pubnub-publish>
-		<core-pubnub-history channel="polymer-chat" count="30" on-success="{{historyRetrieved}}" on-error="{{error}}"></core-pubnub-history>
-    </core-pubnub-subscribe>
-</core-pubnub>
+		<!-- Use your own publish_key and subscribe_key please -->
+		<core-pubnub publish_key="pub-c-156a6d5f-22bd-4a13-848d-b5b4d4b36695" subscribe_key="sub-c-f762fb78-2724-11e4-a4df-02ee2ddab7fe" uuid="{{uuid}}">
+			<core-pubnub-subscribe channel="polymer-chat" id="sub" on-callback="subscribeCallback" on-presence="presenceChanged" on-error="{{error}}">
+				<core-pubnub-publish channel="polymer-chat" message="" id="pub" on-error="{{error}}"></core-pubnub-publish>
+				<core-pubnub-history channel="polymer-chat" count="30" on-success="historyRetrieved" on-error="{{error}}"></core-pubnub-history>
+			</core-pubnub-subscribe>
+		</core-pubnub>
 
 <paper-drawer-panel id="drawerPanel" responsive-width="1280px">
-	<paper-header-panel class="main" main mode="waterfall">
-	    <paper-toolbar id="navheader" class="tall">
-    		<div class="middle avatar {{color}}" style="background-image: url({{avatar}})"></div>
+<div class="nav" drawer>
+		<paper-toolbar id="navheader" class="tall">
+    		<div class$="{{_colorClass(color)}}"  style$="{{_backgroundImage(avatar)}}"></div>
 	      	<div class="bottom uuid">{{uuid}}</div>
 	    </paper-toolbar>
 
-	    <!-- Main Content -->
-        <div class="content">
-			<section layout vertical id="onlineList">
-	    		<paper-item label="Online Now" class="subdue" layout horizontal center></paper-item>
 
-		   		<template repeat="{{cat in cats}}">
-		   			<paper-item label="{{cat}}"></paper-item>
-		   		</template>
-	    	</section>
-        </div>
-  	</paper-header-panel>
+	<section class="layout vertical" id="onlineList">
+		<paper-item class="subdue layout horizontal center">Online Now</paper-item>
+		<template is="dom-repeat" items="{{cats}}" as="cat">
+			<paper-item>{{cat}}</paper-item>
+		</template>
+	</section>
+</div>
 
-  	<div tool layout horizontal flex>
-  		<div flex>Kitteh Anonymous</div>
+<paper-header-panel main mode="waterfall">
+
+<paper-toolbar>
+  		<div class="flex">Kitteh Anonymous</div>
   		<iron-icon icon="account-circle"></iron-icon><span>{{occupancy}}</span>
-  	</div>
+</paper-toolbar>
 
-  	<section layout vertical fit id="chat">
-		<div flex class="chat-list">
-			<template repeat="{{message in messageList}}">
-				<x-chat-list color="{{message.color}}" avatar="{{message.avatar}}" username="{{message.uuid}}" text="{{message.text}}"  status="{{message.status}}" timestamp="{{message.timestamp}}"></x-chat-list>
+<!-- Main Content -->
+<div class="layout vertical fit" id="chat">
+		<div class="chat-list flex">
+		<!--<x-chat-list avatar="url" username="name" text="hello" status="online" timestamp="1420145273945"></x-chat-list>-->
+			<template is="dom-repeat" items="{{messageList}}" as="message">
+				<x-chat-list color="{{message.color}}" avatar="{{message.avatar}}" username="{{message.uuid}}" text="{{message.text}}" status="{{message.status}}" timestamp="{{message.timestamp}}"></x-chat-list>
 			</template>
 		</div>
 		<div class="shim"></div>
 
-		<div class="send-message" layout horizontal>
-	    	<paper-input flex label="Type message..." id="input" value="{{input}}" on-keyup="{{checkKey}}"></paper-input>
-	    	<paper-fab icon="send" id="sendButton" on-tap="{{sendMyMessage}}"></paper-fab>
-	    </div>
-  	</section>
+		<div class="send-message layout horizontal">
+			<paper-input class="flex" label="Type message..." id="input" value="{{input}}" on-keyup="checkKey"></paper-input>
+			<paper-fab icon="send" id="sendButton" on-tap="sendMyMessage"></paper-fab>
+		</div>
+</div>
+</paper-header-panel>
 </paper-drawer-panel>
 
 </template>
-
-<script src="js/app.min.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

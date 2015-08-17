@@ -21,13 +21,15 @@
 
     function showNewest() {
         //document.querySelector('core-scaffold').$.headerPanel.scroller.scrollTop = document.querySelector('.chat-list').scrollHeight;
+
         var chatDiv = document.querySelector('.chat-list');
-        chatDiv.scrollTop = chatDiv.scrollHeight;
+        chatDiv.scrollTop = chatDiv.scrollHeight; //TODO: Need to fix so that we can find the .chat-list class object
     }
 
     /* Polymer UI and UX */
 
-    var template = document.querySelector('template[is=auto-binding]');
+
+    var template = Polymer.dom(this).querySelector('template[is=dom-bind]');//document.querySelector('template[is=dom-bind]');
 
     template.channel = 'polymer-chat';
     template.uuid = uuid;
@@ -109,6 +111,7 @@
 
         // display at the left column
         template.cats = onlineUuids;
+
         // update the status at the main column
         if(template.messageList.length > 0) {
             template.messageList = this.getListWithOnlineStatus(template.messageList);
@@ -140,4 +143,11 @@
         console.log(e);
     };
 
+    template._colorClass = function(color) {
+        return 'middle avatar '+color;
+    };
+
+    template._backgroundImage = function(avatar) {
+        return 'background-image: url('+avatar+');';
+    };
 })();
