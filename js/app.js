@@ -35,6 +35,7 @@
     template.uuid = uuid;
     template.avatar = avatar;
     template.color = color;
+    template.cats = [];
 
     template.checkKey = function(e) {
         if(e.keyCode === 13 || e.charCode === 13) {
@@ -65,7 +66,7 @@
                 console.log('Oh you, I made this demo open so nice devs can play with, but you are soiling everything :-(');
             }
 
-            if(onlineUuids.indexOf(l.uuid) > -1) {
+            if(template.cats.indexOf(l.uuid) > -1) {
                 l.status = 'online';
             } else {
                 l.status = 'offline';
@@ -99,18 +100,16 @@
             if(d.uuid.length > 35) { // console
                 d.uuid = 'the-mighty-big-cat';
             }
-            onlineUuids.push(d.uuid);
+            this.push("cats", d.uuid);
+            
         } else {
-            var idx = onlineUuids.indexOf(d.uuid);
+            var idx = template.cats.indexOf(d.uuid);
             if(idx > -1) {
-                onlineUuids.splice(idx, 1);
+                this.splice("cats", idx, 1);
             }
         }
 
         i++;
-
-        // display at the left column
-        template.cats = onlineUuids;
 
         // update the status at the main column
         if(template.messageList.length > 0) {

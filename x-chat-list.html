@@ -97,7 +97,7 @@ A single user list with a username, avatar, and desc.
 <template>
 	<section class="user-list layout horizontal">
 		<div class$="{{_colorClass(color)}}" style$="{{_backgroundImage(avatar)}})">
-			<div class="status {{status}}"></div>
+			<div class$="{{_statusClass(status)}}"></div>
 		</div>
 		<div class="flex">
 			<div class="username">{{username}}</div>
@@ -123,6 +123,9 @@ Polymer({
     	},
     	_backgroundImage: function(avatar) {
         	return 'background-image: url('+avatar+');';
+    	},
+    	_statusClass: function(status) {
+        	return 'status ' + status;
     	}
 });
 </script>
