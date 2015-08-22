@@ -10,25 +10,21 @@ body {
     height: 100%;
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
-core-scaffold::shadow core-toolbar {
+paper-drawer-panel::shadow paper-toolbar {
     background-color: #ce1126;
     color: #fff;
 }
-core-icon[icon=account-circle] {
+iron-icon[icon=account-circle] {
     margin-right: 3px;
 }
-paper-input {
-    padding-right: 10px;
-}
-paper-input /deep/ .focused-underline {
-    background-color: #ce1126;
-}
+
 paper-fab[icon=send] {
     background: #ce1126;
     bottom: 9px;
 }
 #chat {
     height: 100%;
+    background-color: #eee; /*TODO: This is needed because this isn't a core-scaffold any more which had default color of #eee*/
 }
 .chat-list {
     overflow-y: scroll;
@@ -37,7 +33,7 @@ paper-fab[icon=send] {
 .send-message {
     padding: 0 16px 6px 16px;
 }
-.shim {
+.shim{
     position: fixed;
     bottom: 54px;
     left: 0;

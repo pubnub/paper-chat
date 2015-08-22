@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>pubnub-element Demo/Testing</title>
+
+  <script src="../platform/platform.js"></script>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="import" href="pubnub-element.html">
+  <link rel="import" href="demo-element.html"> 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body >
+  <core-pubnub publish_key="pub-c-0236c7bb-a942-4ffd-93fe-c60380d89611"
+               subscribe_key="sub-c-b969ffd2-2707-11e4-a114-02ee2ddab7fe" 
+               origin="pubsub.pubnub.com" id="core" uuid="">
+    <core-pubnub-subscribe channel="pubnubPolymerDemo" id="sub"> 
+      <core-pubnub-publish channel="pubnubPolymerDemo" id="pub" message="Published after...">
+        <core-pubnub-publish channel="pubnubPolymerDemo" id="pub2" message="connecting!">
+          <core-pubnub-history channel="pubnubPolymerDemo" id="hist" ></core-pubnub-history>
+          <core-pubnub-here-now channel="pubnubPolymerDemo" id="here"></core-pubnub-here-now>
+          <core-pubnub-where-now id="where" uuid=""></core-pubnub-where-now>
+        </core-pubnub-publish>
+      </core-pubnub-publish>
+    </core-pubnub-subscribe>
+  </core-pubnub>
+<div class="container">
+<h1>PubNub Polymer Demo</h1><hr>
+<div class="row">
+    <div class="col-md-8">
+      <h2> <a href="./#core-pubnub-subscribe">&lt;core-pubnub-subscribe&gt; </a> </h2>
+    <div class="col-md-6">
+      <h2>Messages</h2>
+      <list-data heading="Received Messages" id="msgsList"></list-data>
+    </div>
+    <div class="col-md-6">
+      <h2>Presence</h2>
+      <list-data heading="Presence Messages" id="presList"></list-data>
+    </div>
+  </div>
+    <div class="col-md-4">
+      <h2> <a href="./#core-pubnub-publish" >&lt;core-pubnub-publish&gt; </a> </h2>
+        <div class="form-group">
+          <label><h2>Publish a message!</h2></label>
+          <input type="text" class="form-control" id="newMsg">
+        </div>
+        <button id="pubButton" type="submit" class="btn btn-primary">Publish</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-4">
+      <h2> <a href="./#core-pubnub-history">&lt;core-pubnub-history&gt; </a>
+      </h2>
+      <!-- <button id="histButton" type="submit" class="btn btn-default"><i class="fa fa-refresh"></i></button> <br><br> -->
+      <list-data heading="Last 100 Messages" id="histList"></list-data>
+    </div>
+    <div class="col-md-4">
+      <h2> <a href="./#core-pubnub-here-now">&lt;core-pubnub-here-now&gt; </a> </h2>
+      <!--<button id="hereButton" type="submit" class="btn btn-default"><i class="fa fa-refresh"></i></button> <br><br>-->
+      <list-data heading="Current Users" id="hereList"></list-data>
+    </div>
+    <div class="col-md-4">
+      <h2> <a href="./#core-pubnub-where-now">&lt;core-pubnub-where-now&gt; </a> </h2>
+      <!--<button id="whereButton" type="submit" class="btn btn-default"><i class="fa fa-refresh"></i></button> <br><br>-->
+      <list-data heading="Where am I?" id="whereList"></list-data>
+    </div>
+</div>
+
+<script>
+$("#sub")[0].addEventListener('callback', function(e) {
+    $("#msgsList")[0].data = $("#sub")[0].messages;
+});
+$("#sub")[0].addEventListener('presence', function(e) {
+    $("#presList")[0].data = $("#sub")[0].presence.map(function(j) {return JSON.stringify(j, null, 2)});
+});
+$("#hist")[0].addEventListener('success', function(e) {
+    $("#histList")[0].data = e.detail[0];
+});
+$("#here")[0].addEventListener('presence', function(e) {
+    $("#hereList")[0].data = e.detail.uuids;
+});
+$("#where")[0].addEventListener('presence', function(e) {
+    $("#whereList")[0].data = e.detail.channels;
+});
+$("#pubButton").click(function() {
+  $("#pub")[0].message =  $("#newMsg").val();
+  $("#pub")[0].publish();
+});
+$("#newMsg").keyup(function(e) {
+  if (e.which === 13) {
+    $("#pubButton").click();
+  }
+});
+</script>
+</body>
+</html>

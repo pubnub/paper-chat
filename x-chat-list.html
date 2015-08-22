@@ -7,9 +7,12 @@ A single user list with a username, avatar, and desc.
 
 -->
 <script src="bower_components/time-elements/time-elements.js"></script>
-<polymer-element name="x-chat-list" attributes="avatar color username text status timestamp">
-  <template>
-	<style>
+
+
+
+<dom-module id="x-chat-list">
+
+<style>
 	:host {
 		display: block;
         position: relative;
@@ -93,25 +96,51 @@ A single user list with a username, avatar, and desc.
 	}
 	</style>
 
-	<section class="user-list" layout horizontal>
-		<div class="avatar {{color}}" style="background-image: url({{avatar}})">
-			<div class="status {{status}}"></div>
+<!-- Polymer 1.0 change
+The most common attributes (class, style ...) should now use the '$=' operator instead of the '=' operator when assigned dynamic values.
+See: https://www.polymer-project.org/1.0/docs/devguide/data-binding.html#native-binding
+Also, dynamic values can no longer be concencated. This is not possible any more: <div class="{{value1}} green"></div>. Instead a computed property
+or a method call should be made which returns the wanted String until they implement this (apparently it's in the road-map).
+-->
+<template>
+	<section class="user-list layout horizontal">
+		<div class$="{{_colorClass(color)}}" style$="{{_backgroundImage(avatar)}})">
+			<div class$="{{_statusClass(status)}}"></div>
 		</div>
-		<div flex>
+		<div class="flex">
 			<div class="username">{{username}}</div>
 			<div class="text">{{text}}</div>
 		</div>
-		<time class="timestamp" is="relative-time" datetime="{{timestamp}}"></time>
+		<time class="timestamp" is="relative-time" datetime$="{{timestamp}}"></time>
 	</section>
 </template>
+
+
+<!-- Polymer 1.0 change
+Published properties should now be defined as seen below (the properties-object)
+-->
 <script>
-Polymer('x-chat-list', {
-	avatar: '',
-	color: '',
-	username: '',
-	text: '',
-	status: '',
-	timestamp: new Date().toISOString(),
+Polymer({
+		is: 'x-chat-list',
+		properties: {
+			avatar: '',
+			color: '',
+			username: '',
+			text: '',
+			status: '',
+			timestamp: new Date().toISOString()
+		},
+		_colorClass: function(color) {
+        	return 'avatar '+color;
+    	},
+    	_backgroundImage: function(avatar) {
+        	return 'background-image: url('+avatar+');';
+    	},
+    	_statusClass: function(status) {
+        	return 'status ' + status;
+    	}
 });
 </script>
-</polymer-element>
+
+
+</dom-module>

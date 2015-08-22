@@ -20,19 +20,18 @@
     avatar = 'images/' + cat + '.jpg';
 
     function showNewest() {
-        //document.querySelector('core-scaffold').$.headerPanel.scroller.scrollTop = document.querySelector('.chat-list').scrollHeight;
         var chatDiv = document.querySelector('.chat-list');
-        chatDiv.scrollTop = chatDiv.scrollHeight;
+        chatDiv.scrollTop = chatDiv.scrollHeight; //TODO: Need to fix so that we can find the .chat-list class object
     }
 
     /* Polymer UI and UX */
-
-    var template = document.querySelector('template[is=auto-binding]');
+    var template = Polymer.dom(this).querySelector('template[is=dom-bind]');
 
     template.channel = 'polymer-chat';
     template.uuid = uuid;
     template.avatar = avatar;
     template.color = color;
+    template.cats = [];
 
     template.checkKey = function(e) {
         if(e.keyCode === 13 || e.charCode === 13) {
@@ -49,8 +48,14 @@
 
     /* PubNub Realtime Chat */
 
+    /* Polymer 1.0 change
+    As you can see below instead of onlineUuids.push(d.uuid), we now use this.push("cats", d.uuid). 
+    This will add d.uuid directly to the cats variable in our object and also notify that a change has occured. Polymer 0.5 used
+    dirty checking which was not very effecient. In other words; whenever you want to add something to an array and want for example UI to be updated
+    use this.push("nameOnVariable", value).
+    */
+
     var pastMsgs = [];
-    var onlineUuids = [];
 
     template.getListWithOnlineStatus = function(list) {
         [].forEach.call(list, function(l) {
@@ -63,7 +68,7 @@
                 console.log('Oh you, I made this demo open so nice devs can play with, but you are soiling everything :-(');
             }
 
-            if(onlineUuids.indexOf(l.uuid) > -1) {
+            if(template.cats.indexOf(l.uuid) > -1) {
                 l.status = 'online';
             } else {
                 l.status = 'offline';
@@ -97,18 +102,17 @@
             if(d.uuid.length > 35) { // console
                 d.uuid = 'the-mighty-big-cat';
             }
-            onlineUuids.push(d.uuid);
+            this.push("cats", d.uuid);
+            
         } else {
-            var idx = onlineUuids.indexOf(d.uuid);
+            var idx = template.cats.indexOf(d.uuid);
             if(idx > -1) {
-                onlineUuids.splice(idx, 1);
+                this.splice("cats", idx, 1);
             }
         }
 
         i++;
 
-        // display at the left column
-        template.cats = onlineUuids;
         // update the status at the main column
         if(template.messageList.length > 0) {
             template.messageList = this.getListWithOnlineStatus(template.messageList);
@@ -140,4 +144,11 @@
         console.log(e);
     };
 
+    template._colorClass = function(color) {
+        return 'middle avatar '+color;
+    };
+
+    template._backgroundImage = function(avatar) {
+        return 'background-image: url('+avatar+');';
+    };
 })();
