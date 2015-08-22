@@ -20,16 +20,12 @@
     avatar = 'images/' + cat + '.jpg';
 
     function showNewest() {
-        //document.querySelector('core-scaffold').$.headerPanel.scroller.scrollTop = document.querySelector('.chat-list').scrollHeight;
-
         var chatDiv = document.querySelector('.chat-list');
         chatDiv.scrollTop = chatDiv.scrollHeight; //TODO: Need to fix so that we can find the .chat-list class object
     }
 
     /* Polymer UI and UX */
-
-
-    var template = Polymer.dom(this).querySelector('template[is=dom-bind]');//document.querySelector('template[is=dom-bind]');
+    var template = Polymer.dom(this).querySelector('template[is=dom-bind]');
 
     template.channel = 'polymer-chat';
     template.uuid = uuid;
@@ -52,8 +48,14 @@
 
     /* PubNub Realtime Chat */
 
+    /* Polymer 1.0 change
+    As you can see below instead of onlineUuids.push(d.uuid), we now use this.push("cats", d.uuid). 
+    This will add d.uuid directly to the cats variable in our object and also notify that a change has occured. Polymer 0.5 used
+    dirty checking which was not very effecient. In other words; whenever you want to add something to an array and want for example UI to be updated
+    use this.push("nameOnVariable", value).
+    */
+
     var pastMsgs = [];
-    var onlineUuids = [];
 
     template.getListWithOnlineStatus = function(list) {
         [].forEach.call(list, function(l) {
