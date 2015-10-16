@@ -45,3 +45,15 @@ Thank you <3
 [pubnub]: http://www.pubnub.com/docs/javascript/javascript-sdk.html
 
 [blog]: http://www.pubnub.com/blog/creating-a-polymer-chat-app-with-material-design/
+
+---
+## Polymer 1.x Support
+
+Since Polymer 0.5x (used in this app) and the new Polymer 1.x are incompatible, I decided to create a new repo for the updated Kitteh Anonymous. 
+
+However, if you wish to try, the gh-pages is available on [http://pubnub.github.io/paper-chat-v1](http://pubnub.github.io/paper-chat-v1).
+The repo is still in private, but I will make it avalable sometimes.
+
+And a huge thank you to [Whyser](https://github.com/Whyser), who migrated the app to Polymer 1.0 and sent me the pull request. I am so sorry that I have not got a chance to work on it.
+
+I promise I will finish it up and write the tutorial!
