@@ -32,7 +32,7 @@
 <template is="auto-binding">
 
 <!-- Use your own publish_key and subscribe_key please -->
-<core-pubnub publish_key="pub-c-..." subscribe_key="sub-c-..." uuid="{{uuid}}">
+<core-pubnub publish_key="pub-c-5b7dd4d4-59e9-49f5-a63e-8b8e5ef6a57b" subscribe_key="sub-c-d3031a14-7436-11e5-8f6d-0619f8945a4f" uuid="{{uuid}}">
 	<core-pubnub-subscribe channel="polymer-chat" id="sub" on-callback="{{subscribeCallback}}" on-presence="{{presenceChanged}}" on-error="{{error}}">
 	    <core-pubnub-publish channel="polymer-chat" message="" id="pub" on-error="{{error}}"></core-pubnub-publish>
 		<core-pubnub-history channel="polymer-chat" count="30" on-success="{{historyRetrieved}}" on-error="{{error}}"></core-pubnub-history>
