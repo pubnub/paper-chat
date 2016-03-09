@@ -1,3 +1,7 @@
+*Note: I decided to separate a repo for the new Polymer 1.x Paper Chat, and it is available on [github.com/pubnub/polymer-cat-chat-v1](https://github.com/pubnub/polymer-cat-chat-v1). A huge thanks to [Whyser](https://github.com/Whyser) for the Polymer 1.0 migration help!!!*
+
+*Tomomi*
+
 ![Material Design and Polymer](http://pubnub.com/blog/wp-content/uploads/2015/01/paper-chat-cover.png "Material Design and Polymer")
 
 # Paper Chat Demo
